@@ -1,12 +1,12 @@
 ---
 lab:
   title: Verwenden von automatisiertem maschinellen Lernen
-ms.openlocfilehash: 6344e74d7177b4a90c57ac91916c61c78c251452
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: 25312648c7957dfd958098bc74faac249382eec8
+ms.sourcegitcommit: 48c912e43571d4bddcc70260e4dc85ebbc040b27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132832645"
+ms.lasthandoff: 11/30/2021
+ms.locfileid: "133289666"
 ---
 # <a name="use-automated-machine-learning"></a>Verwenden von automatisiertem maschinellen Lernen
 
@@ -79,18 +79,23 @@ In Azure Machine Learning werden ausgeführte Vorgänge *Experimente* genannt. F
     - **Konfigurieren der Ausführung:**
         - **Name des neuen Experiments**: mslearn-automl-diabetes
         - **Zielspalte**: Diabetiker (*Dies ist die Beschriftung, die das Modell durch das Training vorhersagen soll.* )
-        - **Computecluster auswählen**: *zuvor erstellter Computecluster*
+        - **Computetyp auswählen**: Computecluster
+        - **Azure ML-Computecluster auswählen**: *zuvor erstellter Computecluster*
     - **Tasktyp- und einstellungen**:
         - **Aufgabentyp**: Klassifizierung
-        - **Zusätzliche Konfigurationseinstellungen**:
+        - Wählen Sie **Zusätzliche Konfigurationseinstellungen anzeigen** aus, um **Zusätzliche Konfigurationen** zu öffnen:
             - **Primäre Metrik**: Wählen Sie **AUC_Weighted** aus (*Weitere Informationen zu dieser Metrik folgen später.* )
             - **Explain best model** (Bestes Modell erklären): ausgewählt – *Diese Option bewirkt, dass mit dem automatisierten maschinellen Lernen die Relevanz der Merkmale für das beste Modell berechnet wird. So können Sie den Einfluss der einzelnen Merkmale auf die vorhergesagte Bezeichnung ermitteln.*
             - **Blockierte Algorithmen**: Übernehmen Sie die Standardeinstellung. *Alle Algorithmen können möglicherweise beim Training verwendet werden.*
             - **Exit criterion** (Beendigungskriterien):
                 - **Trainingsauftragszeit (Stunden)**: 0,5 – *Dies bewirkt, dass das Experiment nach maximal 30 Minuten beendet wird.*
                 - **Metrischer Bewertungsschwellenwert**: 0,90 – *Dies führt dazu, dass das Experiment beendet wird, wenn ein Modell eine gewichtete AUC-Metrik von 90 % oder höher erreicht.*
-        - **Featurisierungseinstellungen:**
+        - Wählen Sie **Featurisierungseinstellungen anzeigen** aus, um die **Featurisierung** zu öffnen:
             - **Enable featurization** (Featurisierung aktivieren): ausgewählt – *Dies bewirkt, dass Azure Machine Learning die Merkmale vor dem Training automatisch vorverarbeitet*.
+    - **Validierungs- und Testtyp auswählen**:
+        - **Validierungstyp**: Aufteilung der Train-Validation
+        - **Prozentsatz der Datenvalidierung**: 30
+        - **Testdataset**: Kein Testdataset erforderlich
 
 3. Wenn Sie die Details für die automatisierte ML-Ausführung übermittelt haben, wird der Vorgang automatisch gestartet. Sie können den Status der Ausführung im Bereich **Eigenschaften** beobachten.
 4. Wenn der Status der Ausführung in *Wird ausgeführt* geändert wird, zeigen Sie die Registerkarte **Modelle** an, und achten Sie darauf, dass jede mögliche Kombination aus Trainingsalgorithmen und Vorverarbeitungsschritten ausprobiert und die Leistung des resultierenden Modells ausgewertet wird. Die Seite wird automatisch regelmäßig aktualisiert, aber Sie können auch auf **&#8635; Aktualisieren** klicken. Es kann etwa zehn Minuten dauern, bis die Modelle angezeigt werden, weil die Clusterknoten initialisiert werden müssen und der Datenfeaturisierungsprozess abgeschlossen sein muss, bevor das Training beginnen kann. Jetzt ist vielleicht ein guter Zeitpunkt für eine Kaffeepause!
@@ -115,11 +120,12 @@ Nachdem Sie mithilfe von automatisiertem maschinellem Lernen einige Modelle trai
 > **Hinweis**: In Azure Machine Learning können Sie einen Dienst als ACI-Instanz (Azure Container Instances) oder in einem AKS-Cluster (Azure Kubernetes Service) bereitstellen. In Produktionsszenarios wird eine AKS-Bereitstellung empfohlen, für die Sie einen *Rückschlusscluster* als Computeziel erstellen müssen. In dieser Übung verwenden Sie einen ACI-Dienst, der ein geeignetes Bereitstellungsziel für Tests darstellt. Es ist nicht erforderlich, einen Rückschlusscluster zu erstellen.
 
 1. Wählen Sie die Registerkarte **Details** für die Ausführung aus, die das beste Modell erzeugt hat.
-2. Verwenden Sie die Schaltfläche **Bereitstellen**, um das Modell mit den folgenden Einstellungen bereitzustellen:
+2. Verwenden Sie in der Option **Bereitstellen** die Schaltfläche **Für Webdienst bereitstellen**, um das Modell mit den folgenden Einstellungen bereitzustellen:
     - **Name**: auto-predict-diabetes
     - **Beschreibung**: Vorhersage von Diabetes
-    - **Computetyp:** ACI
+    - **Computetyp:** Azure Container Instances
     - **Authentifizierung aktivieren:** ausgewählt
+    - **Benutzerdefinierte Bereitstellungsressourcen verwenden**: Nicht ausgewählt
 3. Warten Sie, bis die Bereitstellung gestartet wurde. Dieser Vorgang kann einige Sekunden in Anspruch nehmen. Beachten Sie dann auf der Registerkarte **Modell** im Abschnitt **Modellzusammenfassung** den **Bereitstellungsstatus** für den Dienst **auto-predict-diabetes**, der **Wird ausgeführt** lauten sollte. Warten Sie, bis der Status in **Erfolgreich** geändert wurde. Möglicherweise müssen Sie in regelmäßigen Abständen auf **&#8635; Aktualisieren** klicken.  **HINWEIS** Dies kann eine Weile dauern – wir bitten um Geduld.
 4. Zeigen Sie in Azure Machine Learning Studio die Seite **Endpunkte** an, und wählen Sie den Echtzeitendpunkt für **auto-predict-diabetes** aus. Klicken Sie dann auf die Registerkarte **Consume** (Nutzen), und notieren Sie sich die folgenden Informationen. Sie benötigen diese Informationen, um von einer Clientanwendung aus eine Verbindung mit dem bereitgestellten Dienst herzustellen.
     - REST-Endpunkt für Ihren Dienst

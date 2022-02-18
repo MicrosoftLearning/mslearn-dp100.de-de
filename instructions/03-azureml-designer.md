@@ -1,12 +1,12 @@
 ---
 lab:
   title: Verwenden des Azure Machine Learning-Designers
-ms.openlocfilehash: d9ebd39449d17d36b9b9e4ad2d2d43c4b866a305
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: 3bfe1bf2e119c295ad3931c569e1f09b41bb2174
+ms.sourcegitcommit: 38540a481d1dfa9bab570777b72e3cf9b6ee6da7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132832611"
+ms.lasthandoff: 12/16/2021
+ms.locfileid: "135372693"
 ---
 # <a name="use-azure-machine-learning-designer"></a>Verwenden des Azure Machine Learning-Designers
 
@@ -66,8 +66,9 @@ Zum Einstieg in den Designer müssen Sie zunächst eine Pipeline erstellen und d
 2. Ändern Sie den Standardnamen der Pipeline (**Pipeline-Erstellt-am* Datum***) in **Visuelles Diabetes-Training**. Klicken Sie hierzu auf den Standardnamen (oder klicken Sie auf das Symbol **&#9881;** neben dem Pipelinenamen, und ändern Sie ihn von dort aus).
 3. Beachten Sie, dass Sie ein Computeziel angeben müssen, auf dem die Pipeline ausgeführt werden soll. Klicken Sie im Bereich **Einstellungen** auf **Computeziel auswählen**, und wählen Sie Ihren Computecluster aus.
 4. Erweitern Sie auf der linken Seite des Designers den Abschnitt **Datasets**, und ziehen Sie das **Diabetes-Dataset** auf den Zeichenbereich.
-5. Wählen Sie das Modul **Diabetes-Dataset** im Zeichenbereich aus. Klicken Sie dann mit der rechten Maustaste auf das Dataset, und wählen Sie im Menü **Visualisieren** die Option **Datasetausgabe** aus.
-6. Überprüfen Sie das Schema der Daten. Beachten Sie, dass die Verteilungen der verschiedenen Spalten als Histogramme angezeigt werden. Schließen Sie dann das Visualisierungsfenster.
+5. Wählen Sie das Modul **Diabetes-Dataset** im Zeichenbereich aus. Klicken Sie dann mit der rechten Maustaste darauf, und wählen Sie **Datenvorschau** aus.
+6. Wählen Sie im Bereich DatasetOutput die Registerkarte **Profil** aus.
+7. Überprüfen Sie das Schema der Daten. Beachten Sie, dass die Verteilungen der verschiedenen Spalten als Histogramme angezeigt werden. Schließen Sie dann das Visualisierungsfenster.
 
 ## <a name="add-transformations"></a>Transformationen hinzufügen
 
@@ -116,7 +117,7 @@ Nachdem Sie die Schritte des Datenflusses definiert haben, können Sie nun die T
     >
     > Während der Ausführung können Sie die erstellten Pipelines und Experimente auf den Seiten **Pipelines** und **Experimente** anzeigen. Wenn sie fertig sind, wechseln Sie zurück zur Pipeline **Visuelles Diabetes-Training** auf der Seite **Designer**.
 
-3. Nachdem das Modul **Daten normalisieren** abgeschlossen wurde, wählen Sie dieses aus. Klicken Sie dann im Bereich **Einstellungen** auf die Registerkarte **Ausgaben + Protokolle**. Klicken Sie anschließend unter **Datenausgaben** im Abschnitt **Transformierter Datensatz** auf das Symbol **Visualisieren**. Beachten Sie, dass Sie Statistiken und Verteilungsvisualisierungen für die transformierten Spalten anzeigen können.
+3. Nachdem das Modul **Daten normalisieren** abgeschlossen wurde, wählen Sie dieses aus. Klicken Sie dann im Bereich **Einstellungen** auf die Registerkarte **Ausgaben + Protokolle**. Klicken Sie anschließend unter **Datenausgaben** im Abschnitt **Transformierter Datensatz** auf das Symbol **Datenvorschau**. Beachten Sie, dass Sie Statistiken und Verteilungsvisualisierungen für die transformierten Spalten anzeigen können.
 4. Schließen Sie die Visualisierungen **Daten normalisieren** und warten Sie, bis die restlichen Module abgeschlossen sind. Visualisieren Sie dann die Ausgabe des Moduls **Modell auswerten**, um die Leistungsmetriken für das Modell anzuzeigen.
 
     **Hinweis**: Die Leistung dieses Modells ist nicht besonders gut, was zum Teil daran liegt, dass wir nur eine minimale Featurisierung und Vorverarbeitung durchgeführt haben. Sie könnten verschiedene Klassifizierungsalgorithmen ausprobieren und die Ergebnisse vergleichen (Sie können die Ausgaben des Moduls **Daten aufteilen** mit mehreren Modulen **Modell trainieren** und **Modell bewerten** verbinden, und Sie können ein zweites bewertetes Modell mit dem Modul **Modell auswerten** verbinden, um einen direkten Vergleich zu erhalten). Der Zweck der Übung besteht lediglich darin, Sie mit der Designeroberfläche vertraut zu machen. Das Ziel ist nicht, ein perfektes Modell zu trainieren.
@@ -191,4 +192,4 @@ Der von Ihnen erstellte Webdienst wird in einer *Azure-Containerinstanz* gehoste
 1. Wählen Sie in Azure Machine Learning Studio auf der Registerkarte **Endpunkte** den Endpunkt **Designer-Diabetesvorhersage** aus. Wählen Sie dann auf die Schaltfläche **Löschen** (&#128465;), und bestätigen Sie, dass Sie den Endpunkt löschen möchten.
 2. Wenn Sie die Arbeit mit Azure Machine Learning vorerst beendet haben, wählen Sie auf der Registerkarte **Compute-Instanzen** Ihre Compute-Instanz aus, und klicken Sie auf **Beenden**, um sie herunterzufahren.
 
-> **Hinweis**: Durch das Beenden Ihrer Compute-Instanz wird sichergestellt, dass Ihrem Abonnement keine Computeressourcen in Rechnung gestellt werden. Ihnen wird jedoch eine geringe Datenspeichermenge in Rechnung gestellt, solange der Azure Machine Learning-Arbeitsbereich in Ihrem Abonnement enthalten ist. Wenn Sie mit dem Erkunden von Azure Machine Learning fertig sind, können Sie Ihren Azure Machine Learning-Arbeitsbereich und die zugehörigen Ressourcen löschen. Wenn Sie jedoch weitere Labs in dieser Reihe durchführen möchten, müssen Sie die Übung *[Erstellen eines Azure Machine Learning-Arbeitsbereich](01-create-a-workspace.md)* wiederholen, um zunächst den Arbeitsbereich zu erstellen und die Umgebung vorzubereiten.
+> **Hinweis**: Durch das Beenden Ihrer Compute-Instanz wird sichergestellt, dass Ihrem Abonnement keine Computeressourcen in Rechnung gestellt werden. Ihnen wird jedoch eine geringe Datenspeichermenge in Rechnung gestellt, solange der Azure Machine Learning-Arbeitsbereich in Ihrem Abonnement enthalten ist. Wenn Sie mit dem Erkunden von Azure Machine Learning fertig sind, können Sie Ihren Azure Machine Learning-Arbeitsbereich und die zugehörigen Ressourcen löschen. Wenn Sie jedoch weitere Labs in dieser Reihe durchführen möchten, müssen Sie die Übung *[Erstellen eines Azure Machine Learning-Arbeitsbereichs](01-create-a-workspace.md)* wiederholen, um zunächst den Arbeitsbereich zu erstellen und die Umgebung vorzubereiten.
