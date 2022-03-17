@@ -1,12 +1,12 @@
 ---
 lab:
   title: Erstellen eines Azure Machine Learning-Arbeitsbereichs
-ms.openlocfilehash: a0deba33c56b152f6e0ac1f95cdaae2886574bb6
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: 03b79f321ac3b5f7a5b9a03a3760db5649898eed
+ms.sourcegitcommit: 66d8872bc3d24c2121e225be132b56f4df7920ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132832615"
+ms.lasthandoff: 02/12/2022
+ms.locfileid: "138597267"
 ---
 # <a name="create-and-explore-an-azure-machine-learning-workspace"></a>Erstellen und Erkunden eines Azure Machine Learning-Arbeitsbereichs
 
@@ -65,8 +65,7 @@ Einer der Vorteile von Azure Machine Learning ist die Möglichkeit zum Erstellen
         - **Virtuelles Netzwerk aktivieren**: Nicht ausgewählt *(Diese Option wird in der Regel in einer Unternehmensumgebung verwendet, um die Netzwerksicherheit zu verbessern.)*
         - **Einem anderen Benutzer zuweisen**: Nicht ausgewählt *(Anhand dieser Option können Sie eine Compute-Instanz einer wissenschaftlichen Fachkraft für Daten zuweisen.)* 3. Warten Sie, bis die Compute-Instanz gestartet wurde und den Status **Wird ausgeführt** aufweist.
 
-> [!NOTE]
-> Compute-Instanzen und Computecluster basieren auf Standardimages virtueller Azure-Computer. Für diese Übung wird das Image *Standard_DS11_v2* empfohlen, um ein optimales Gleichgewicht zwischen Kosten und Leistung zu erzielen. Wenn Ihr Abonnement über ein Kontingent verfügt, das dieses Image nicht enthält, wählen Sie ein alternatives Image aus. Beachten Sie jedoch, dass ein größeres Image höhere Kosten verursachen kann und ein kleineres Image möglicherweise nicht ausreicht, um die Aufgaben auszuführen. Bitten Sie alternativ Ihren Azure-Administrator, Ihr Kontingent zu erhöhen.
+> **Hinweis:** Compute-Instanzen und Computecluster basieren auf Standardimages virtueller Azure-Computer. Für diese Übung wird das Image *Standard_DS11_v2* empfohlen, um ein optimales Gleichgewicht zwischen Kosten und Leistung zu erzielen. Wenn Ihr Abonnement über ein Kontingent verfügt, das dieses Image nicht enthält, wählen Sie ein alternatives Image aus. Beachten Sie jedoch, dass ein größeres Image höhere Kosten verursachen kann und ein kleineres Image möglicherweise nicht ausreicht, um die Aufgaben auszuführen. Bitten Sie alternativ Ihren Azure-Administrator, Ihr Kontingent zu erhöhen.
 
 ## <a name="clone-and-run-a-notebook"></a>Klonen und Ausführen eines Notebooks
 
@@ -85,7 +84,11 @@ Viele Data Science- und Machine Learning-Experimente erfolgen durch die Ausführ
 5. Schließen Sie den Terminalbereich, um die Sitzung zu beenden.
 6. Öffnen Sie im Ordner **/users/*Ihr-Benutzername*/mslearn-dp100** das Notebook **Get Started with Notebooks** (Erste Schritte mit Notebooks). Lesen Sie die Hinweise, und befolgen Sie die darin enthaltenen Anweisungen.
 
-> **Tipp**: Wählen Sie zum Ausführen einer Codezelle die Zelle aus, die Sie ausführen möchten, und klicken Sie dann auf die Schaltfläche **&#9655;** , um die Ausführung zu starten.
+> **Tipp**: Wählen Sie zum Ausführen einer Codezelle die Zelle aus, die Sie ausführen möchten, und klicken Sie dann auf die Schaltfläche **&#9655;** , um die Ausführung zu starten. 
+
+> **Haben Sie noch keine Erfahrung mit Python?** Das [Cheat Sheet für Python](cheat-sheets/dp100-cheat-sheet-python.pdf) hilft Ihnen dabei, den Code zu verstehen.
+
+> **Haben Sie noch keine Erfahrung mit maschinellem Lernen?** Unter [Übersicht über maschinelles Lernen](cheat-sheets/dp100-cheat-sheet-machine-learning.pdf) finden Sie eine vereinfachte Übersicht über den Machine-Learning-Prozess in Azure Machine Learning.
 
 ## <a name="stop-your-compute-instance"></a>Beenden Ihrer Compute-Instanz
 
