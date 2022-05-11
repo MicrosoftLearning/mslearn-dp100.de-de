@@ -1,12 +1,12 @@
 ---
 lab:
   title: Erstellen eines Azure Machine Learning-Arbeitsbereichs
-ms.openlocfilehash: 03b79f321ac3b5f7a5b9a03a3760db5649898eed
-ms.sourcegitcommit: 66d8872bc3d24c2121e225be132b56f4df7920ac
+ms.openlocfilehash: c2f33973281221da1a4871f19fbaff8f127d028f
+ms.sourcegitcommit: 8601551af6c32a4c75fd9ecffce750583c2ab4b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2022
-ms.locfileid: "138597267"
+ms.lasthandoff: 04/01/2022
+ms.locfileid: "141346678"
 ---
 # <a name="create-and-explore-an-azure-machine-learning-workspace"></a>Erstellen und Erkunden eines Azure Machine Learning-Arbeitsbereichs
 
@@ -19,12 +19,12 @@ Wie der Name schon sagt, ist ein Arbeitsbereich ein zentraler Ort zum Verwalten 
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com)eine neue **Machine Learning**-Ressource, und geben Sie dabei die folgenden Einstellungen an:
 
     - **Abonnement:** *Geben Sie Ihr Azure-Abonnement an.*
-    - **Ressourcengruppe:** *Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene aus.*
+    - **Ressourcengruppe:***Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene aus.*
     - **Arbeitsbereichsname**: *Geben Sie einen eindeutigen Namen für den Arbeitsbereich ein.*
-    - **Region:** *Wählen Sie die nächstgelegene geografische Region aus.*
-    - **Speicherkonto:** *Für Ihren Arbeitsbereich wird standardmäßig ein neues Speicherkonto erstellt.*
-    - **Schlüsseltresor:** *Für Ihren Arbeitsbereich wird standardmäßig ein neuer Schlüsseltresor erstellt.*
-    - **Application Insights:** *Für Ihren Arbeitsbereich wird standardmäßig eine neue Application Insights-Ressource erstellt.*
+    - **Region:***Wählen Sie die nächstgelegene geografische Region aus.*
+    - **Speicherkonto:***Für Ihren Arbeitsbereich wird standardmäßig ein neues Speicherkonto erstellt.*
+    - **Schlüsseltresor:***Für Ihren Arbeitsbereich wird standardmäßig ein neuer Schlüsseltresor erstellt.*
+    - **Application Insights:***Für Ihren Arbeitsbereich wird standardmäßig eine neue Application Insights-Ressource erstellt.*
     - **Containerregistrierung:** Keine (*wird automatisch erstellt, wenn Sie das erste Mal ein Modell in einem Container bereitstellen*)
 
     > **Hinweis**: Beim Erstellen eines Azure Machine Learning-Arbeitsbereichs können Sie einige erweiterte Optionen verwenden, um den Zugriff über einen *privaten Endpunkt* einzuschränken und benutzerdefinierte Schlüssel für die Datenverschlüsselung anzugeben. Diese Optionen werden in dieser Übung nicht verwendet, aber Sie sollten wissen, dass es sie gibt.
@@ -80,7 +80,7 @@ Viele Data Science- und Machine Learning-Experimente erfolgen durch die Ausführ
     git clone https://github.com/MicrosoftLearning/mslearn-dp100 mslearn-dp100
     ```
 
-4. Wenn der Befehl abgeschlossen ist, klicken Sie im Bereich **Meine Dateien** auf **&#8635;** , um die Ansicht zu aktualisieren und sicherzustellen, dass ein neuer Ordner **/users/*Ihr-Benutzername*/mslearn-dp100** erstellt wurde. Dieser Ordner enthält mehrere **IPYNB**-Notebookdateien.
+4. Wenn der Befehl abgeschlossen ist, klicken Sie im Bereich **Dateien** auf **&#8635;** , um die Ansicht zu aktualisieren und sicherzustellen, dass ein neuer Ordner **/users/*Ihr-Benutzername*/mslearn-dp100** erstellt wurde. Dieser Ordner enthält mehrere **IPYNB**-Notebookdateien.
 5. Schließen Sie den Terminalbereich, um die Sitzung zu beenden.
 6. Öffnen Sie im Ordner **/users/*Ihr-Benutzername*/mslearn-dp100** das Notebook **Get Started with Notebooks** (Erste Schritte mit Notebooks). Lesen Sie die Hinweise, und befolgen Sie die darin enthaltenen Anweisungen.
 

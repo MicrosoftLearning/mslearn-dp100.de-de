@@ -1,12 +1,12 @@
 ---
 lab:
   title: Verwenden von automatisiertem maschinellen Lernen
-ms.openlocfilehash: 25312648c7957dfd958098bc74faac249382eec8
-ms.sourcegitcommit: 48c912e43571d4bddcc70260e4dc85ebbc040b27
+ms.openlocfilehash: 9836a169752705779f263e7b005baf11e2f7b616
+ms.sourcegitcommit: 8601551af6c32a4c75fd9ecffce750583c2ab4b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2021
-ms.locfileid: "133289666"
+ms.lasthandoff: 04/01/2022
+ms.locfileid: "141346684"
 ---
 # <a name="use-automated-machine-learning"></a>Verwenden von automatisiertem maschinellen Lernen
 
@@ -28,7 +28,7 @@ Um automatisiertes maschinelles Lernen verwenden zu können, benötigen Sie eine
 2. Zeigen Sie in Azure Machine Learning Studio die Seite **Compute** an, und starten Sie auf der Registerkarte **Compute-Instanzen** Ihre Compute-Instanz, falls diese noch nicht ausgeführt wird. Sie verwenden diese Compute-Instanz, um Ihr trainiertes Modell zu testen.
 3. Während die Compute-Instanz gestartet wird, wechseln Sie zur Registerkarte **Computecluster**, und fügen Sie einen neuen Computecluster mit den folgenden Einstellungen hinzu. Sie führen das Experiment für automatisiertes maschinelles Lernen in diesem Cluster aus, um die Möglichkeit zu nutzen, die Trainingsläufe auf mehrere Computeknoten zu verteilen:
     - **Standort**: *Derselbe Standort wie Ihr Arbeitsbereich*
-    - **VM-Priorität:** Dediziert
+    - **VM-Dienstebene:** Dedicated
     - **VM-Typ:** CPU
     - **VM-Größe:** Standard_DS11_v2
     - **Computename:** *Geben Sie einen eindeutigen Namen ein.*
@@ -86,7 +86,8 @@ In Azure Machine Learning werden ausgeführte Vorgänge *Experimente* genannt. F
         - Wählen Sie **Zusätzliche Konfigurationseinstellungen anzeigen** aus, um **Zusätzliche Konfigurationen** zu öffnen:
             - **Primäre Metrik**: Wählen Sie **AUC_Weighted** aus (*Weitere Informationen zu dieser Metrik folgen später.* )
             - **Explain best model** (Bestes Modell erklären): ausgewählt – *Diese Option bewirkt, dass mit dem automatisierten maschinellen Lernen die Relevanz der Merkmale für das beste Modell berechnet wird. So können Sie den Einfluss der einzelnen Merkmale auf die vorhergesagte Bezeichnung ermitteln.*
-            - **Blockierte Algorithmen**: Übernehmen Sie die Standardeinstellung. *Alle Algorithmen können möglicherweise beim Training verwendet werden.*
+            - **Alle unterstützten Modelle verwenden**: <u>Nicht</u> ausgewählt: Sie beschränken das Experiment darauf, einige bestimmte Algorithmen auszuprobieren.
+            - **Zulässige Modelle**: Wählen Sie nur **LogisticRegression** und **RandomForest** aus. Dies sind die einzigen Algorithmen, die im Experiment getestet werden.
             - **Exit criterion** (Beendigungskriterien):
                 - **Trainingsauftragszeit (Stunden)**: 0,5 – *Dies bewirkt, dass das Experiment nach maximal 30 Minuten beendet wird.*
                 - **Metrischer Bewertungsschwellenwert**: 0,90 – *Dies führt dazu, dass das Experiment beendet wird, wenn ein Modell eine gewichtete AUC-Metrik von 90 % oder höher erreicht.*
