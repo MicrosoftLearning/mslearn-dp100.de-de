@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: b6d8b3d714baf40245d668ffbd070f62861763ea
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: b4c97f711e7133c719af152638d82207d753d276
+ms.sourcegitcommit: 04eb45ad8982056648f0e834e9a272a9022023dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "137894572"
+ms.lasthandoff: 05/22/2022
+ms.locfileid: "145192782"
 ---
 # <a name="azure-machine-learning-lab-exercises"></a>Azure Machine Learning: Labübungen
 
 Dieses Repository enthält die Labübungen für Microsoft-Kurs [Kurs DP-100T: *Entwerfen und Implementieren einer Data Science-Lösung in Azure*](https://docs.microsoft.com/learn/certifications/courses/dp-100t01) und die entsprechenden Selbststudiummodule zum [Erstellen und Betreiben von Machine Learning-Lösungen mit Azure Machine Learning](https://docs.microsoft.com/learn/paths/build-ai-solutions-with-azure-ml-service/). Diese Labs begleiten die Lernmaterialen und erleichtern die praktische Anwendung der beschriebenen Technologien.
 
-Die Anweisungen für die Labübungen finden Sie unter **[https://aka.ms/mslearn-dp100](https://aka.ms/mslearn-dp100)** .
+Wenn Sie diese Labs in einem lehrgesteuerten Kurs verwenden, sollten Kursteilnehmer das Azure-Abonnement verwenden, das für den Kurs bereitgestellt wird.
 
 ## <a name="what-are-we-doing"></a>Was tun wir?
 
