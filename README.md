@@ -10,7 +10,7 @@ ms.locfileid: "145192782"
 
 Dieses Repository enthält die Labübungen für Microsoft-Kurs [Kurs DP-100T: *Entwerfen und Implementieren einer Data Science-Lösung in Azure*](https://docs.microsoft.com/learn/certifications/courses/dp-100t01) und die entsprechenden Selbststudiummodule zum [Erstellen und Betreiben von Machine Learning-Lösungen mit Azure Machine Learning](https://docs.microsoft.com/learn/paths/build-ai-solutions-with-azure-ml-service/). Diese Labs begleiten die Lernmaterialen und erleichtern die praktische Anwendung der beschriebenen Technologien.
 
-Wenn Sie diese Labs in einem lehrgesteuerten Kurs verwenden, sollten Kursteilnehmer das Azure-Abonnement verwenden, das für den Kurs bereitgestellt wird.
+Wenn Sie diese Labs in einem angeleiteten Kurs verwenden, sollten Kursteilnehmende das Azure-Abonnement verwenden, das für den Kurs bereitgestellt wird.
 
 ## <a name="what-are-we-doing"></a>Was tun wir?
 
