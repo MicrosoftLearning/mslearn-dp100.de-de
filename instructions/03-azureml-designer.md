@@ -1,16 +1,16 @@
 ---
 lab:
   title: Verwenden des Azure Machine Learning-Designers
-ms.openlocfilehash: 3bfe1bf2e119c295ad3931c569e1f09b41bb2174
-ms.sourcegitcommit: 38540a481d1dfa9bab570777b72e3cf9b6ee6da7
+ms.openlocfilehash: 55911fdc4ea7e3a2b48ab0d0a583a0a24121ffca
+ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2021
-ms.locfileid: "135372693"
+ms.lasthandoff: 06/11/2022
+ms.locfileid: "146266847"
 ---
 # <a name="use-azure-machine-learning-designer"></a>Verwenden des Azure Machine Learning-Designers
 
-Der Azure Machine Learning-*Designer* bietet eine Drag & Drop-Umgebung, in der Sie einen Workflow oder eine *Pipeline* für ein Modul zur Dateneingabe, Transformation oder das Modelltraining definieren können, um ein Machine Learning-Modell zu erstellen. Sie können diese Pipeline dann als Webdienst veröffentlichen, den Clientanwendungen für *Rückschlüsse* (das Generieren von Prognosen anhand neuer Daten) nutzen können.
+Der Azure Machine Learning-*Designer* bietet eine Drag & Drop-Umgebung, in der Sie einen Workflow oder eine *Pipeline* für ein Modul zur Dateneingabe, Transformation oder das Modelltraining definieren können, um eine Machine Learning-Komponente zu erstellen. Sie können diese Pipeline dann als Webdienst veröffentlichen, den Clientanwendungen für *Rückschlüsse* (das Generieren von Prognosen anhand neuer Daten) nutzen können.
 
 ## <a name="before-you-start"></a>Vorbereitungen
 
@@ -63,10 +63,10 @@ Nachdem Sie nun über einige Computerressourcen verfügen, die Sie zum Ausführe
 Zum Einstieg in den Designer müssen Sie zunächst eine Pipeline erstellen und das Dataset hinzufügen, mit dem Sie arbeiten möchten.
 
 1. Zeigen Sie in Azure Machine Learning Studio die Seite **Designer** für Ihren Arbeitsbereich an, und erstellen Sie eine neue Pipeline.
-2. Ändern Sie den Standardnamen der Pipeline (**Pipeline-Erstellt-am* Datum***) in **Visuelles Diabetes-Training**. Klicken Sie hierzu auf den Standardnamen (oder klicken Sie auf das Symbol **&#9881;** neben dem Pipelinenamen, und ändern Sie ihn von dort aus).
+2. Ändern Sie den Standardpipelinenamen (**Pipeline-Created-on-* date***) in **Visual Diabetes Training**, indem Sie rechts auf das Symbol **&#9881;** klicken, um den Bereich **Einstellungen** zu öffnen.
 3. Beachten Sie, dass Sie ein Computeziel angeben müssen, auf dem die Pipeline ausgeführt werden soll. Klicken Sie im Bereich **Einstellungen** auf **Computeziel auswählen**, und wählen Sie Ihren Computecluster aus.
-4. Erweitern Sie auf der linken Seite des Designers den Abschnitt **Datasets**, und ziehen Sie das **Diabetes-Dataset** auf den Zeichenbereich.
-5. Wählen Sie das Modul **Diabetes-Dataset** im Zeichenbereich aus. Klicken Sie dann mit der rechten Maustaste darauf, und wählen Sie **Datenvorschau** aus.
+4. Wählen Sie auf der linken Seite des Designers die Registerkarte **Data** (Daten) aus, und ziehen Sie das **diabetes dataset** in den Zeichenbereich.
+5. Wählen Sie die Komponente **diabetes datasett** im Zeichenbereich aus. Klicken Sie dann mit der rechten Maustaste darauf, und wählen Sie **Datenvorschau** aus.
 6. Wählen Sie im Bereich DatasetOutput die Registerkarte **Profil** aus.
 7. Überprüfen Sie das Schema der Daten. Beachten Sie, dass die Verteilungen der verschiedenen Spalten als Histogramme angezeigt werden. Schließen Sie dann das Visualisierungsfenster.
 
@@ -74,9 +74,9 @@ Zum Einstieg in den Designer müssen Sie zunächst eine Pipeline erstellen und d
 
 Bevor Sie ein Modell trainieren können, müssen Sie in der Regel einige Vorverarbeitungstransformationen auf die Daten anwenden.
 
-1. Erweitern Sie im linken Bereich den Abschnitt **Datentransformation**, der eine Vielzahl von Modulen enthält, die Sie zum Transformieren von Daten vor dem Modelltraining verwenden können.
-2. Ziehen Sie ein Modul **Daten normalisieren** auf den Zeichenbereich unterhalb des Moduls **Diabetes-Dataset**. Verbinden Sie dann die Ausgabe des Moduls **Diabetes-Dataset** mit der Eingabe des Moduls **Daten normalisieren**.
-3. Wählen Sie das Modul **Daten normalisieren** aus, und zeigen Sie dessen Einstellungen an. Beachten Sie, dass Sie die Transformationsmethode und die zu transformierenden Spalten angeben müssen. Behalten Sie dann die Transformation **ZScore** bei, und bearbeiten Sie die Spalten so, dass sie die folgenden Spaltennamen enthalten:
+1. Wählen Sie im linken Bereich die Registerkarte **Komponente** aus, die mehrere Komponenten enthält, die Sei zum Transformieren von Daten vor dem Modelltraining verwenden können. Sie können oben im Bereich nach Komponenten suchen.
+2. Suchen Sie nach der Komponente **Normalize Data** (Daten normalisieren), und ziehen Sie sie in den Zeichenbereich, unter die Komponente **diabetes dataset**. Verbinden Sie dann die Ausgabe der Komponente **diabetes dataset** mit der Eingabe der Komponente **Normalize Data**.
+3. Wählen Sie die Komponente **Normalize Data** aus, und zeigen Sie deren Einstellungen an. Beachten Sie, dass Sie die Transformationsmethode und die zu transformierenden Spalten angeben müssen. Behalten Sie dann die Transformation **ZScore** bei, und bearbeiten Sie die Spalten so, dass sie die folgenden Spaltennamen enthalten:
     * PlasmaGlucose
     * DiastolicBloodPressure
     * TricepsThickness
@@ -86,22 +86,22 @@ Bevor Sie ein Modell trainieren können, müssen Sie in der Regel einige Vorvera
 
     **Hinweis**: Wir normalisieren die numerischen Spalten und vereinheitlichen den Maßstab, um zu vermeiden, dass Spalten mit großen Werten das Modelltraining dominieren. Normalerweise würden Sie eine ganze Reihe von Vorverarbeitungstransformationen wie diese anwenden, um Ihre Daten für das Training vorzubereiten, aber diese Übung soll einfach gehalten werden.
 
-4. Jetzt können wir die Daten für Training und Validierung in separate Datasets aufteilen. Ziehen Sie im Bereich links aus dem Abschnitt **Datentransformationen** ein Modul **Daten teilen** auf den Canvas unter das Modul **Daten normalisieren**. Verbinden Sie dann die (linke) Ausgabe *Transformiertes Dataset* des Moduls **Daten normalisieren** mit der Eingabe des Moduls **Daten teilen**.
-5. Wählen Sie das Modul **Daten teilen** aus, und konfigurieren Sie dessen Einstellungen wie folgt:
+4. Jetzt können wir die Daten für Training und Validierung in separate Datasets aufteilen. Suchen Sie im Bereich links nach der Komponente **Split Data** (Geteilte Daten), und ziehen Sie sie auf den Zeichenbereich unter die Komponente **Normalize Data**. Verbinden Sie dann die (linke) Ausgabe des *transformierten Dataset* des Moduls **Normalize Data** mit der Eingabe des Moduls **Split Data**.
+5. Wählen Sie die Komponente **Split Data** (Daten teilen) aus, und konfigurieren Sie die Einstellungen wie folgt:
     * **Aufteilungsmodus:** Zeilen aufteilen
     * **Bruchteil von Zeilen im ersten Ausgabedataset:** 0,7
     * **Zufälliger Ausgangswert:** 123
     * **Geschichtete Aufteilung:** FALSE
 
-## <a name="add-model-training-modules"></a>Hinzufügen von Modelltrainingsmodulen
+## <a name="add-model-training-components"></a>Hinzufügen von Modelltrainingskomponenten
 
 Nachdem die Daten vorbereitet und in Trainings- und Validierungsdatasets aufgeteilt wurden, können Sie die Pipeline zum Trainieren und Auswerten eines Modells konfigurieren.
 
-1. Erweitern Sie im Bereich auf der linken Seite den Abschnitt **Modelltraining**, und ziehen Sie das Modul **Modell trainieren** in die Canvas unter dem Modul **Daten teilen**. Verbinden Sie dann den (linken) Ausgang *Ergebnis Dataset1* des Moduls **Daten teilen** mit dem (rechten) Eingang *Dataset* des Moduls **Modell trainieren**.
-2. Das Modell, das wir trainieren, sagt den Wert **Diabetic** vorher. Wählen Sie also das Modul **Modell trainieren** aus, und ändern Sie dessen Einstellungen, um die Spalte **Bezeichnung** auf **Diabetic** (achten Sie auf die Groß-/Kleinschreibung) festzulegen.
-3. Die Bezeichnung **Diabetic**, die das Modell vorhersagt, ist eine binäre Spalte (Wert 1 für Patienten mit Diabetes und Wert 0 für Patienten ohne Diabetes). Daher müssen Sie das Modell mithilfe eines Algorithmus zur *Klassifizierung* trainieren. Erweitern Sie den Abschnitt **Machine Learning Algorithms** (Algorithmen des maschinellen Lernens), und ziehen Sie unter **Klassifizierung** ein Modul **Logistische Regression in zwei Klassen** auf den Zeichenbereich links neben dem Modul **Daten teilen** und über dem Modul **Modell trainieren**. Verbinden Sie anschließend seinen Ausgang mit dem (linken) Eingang **Untrainiertes Modell** des Moduls **Modell trainieren**.
-4. Um das trainierte Modell zu testen, müssen wir es zur Bewertung des Validierungsdatasets verwenden, das wir bei der Aufteilung der Originaldaten zurückgehalten haben. Erweitern Sie den Abschnitt zur **Modellbewertung und Auswertung**, und ziehen Sie das Modul **Modell bewerten** in die Canvas unterhalb des Moduls **Modell trainieren**. Verbinden Sie anschließend die Ausgabe des Moduls **Modell trainieren** mit der (linken) Eingabe **Trainiertes Modell** des Moduls **Modell bewerten**. Ziehen Sie die (rechte) Ausgabe **Ergebnisse Dataset2** des Moduls **Daten teilen** in die (rechte) Eingabe **Dataset** des Moduls **Modell bewerten**.
-5. Um die Leistung des Modells auszuwerten, müssen wir uns einige Metriken ansehen, die durch die Bewertung des Validierungsdatasets generiert werden. Ziehen Sie ein Modul **Modell auswerten** aus dem Abschnitt **Modellbewertung und -auswertung** in den Zeichenbereich und unter das Modul **Modell bewerten**. Verbinden Sie dann die Ausgabe des Moduls **Modell bewerten** mit der Eingabe **Bewertetes Dataset** (links) des Moduls **Modell auswerten**.
+1. Suchen Sie nach der **Train Model**-Komponente (Modell trainieren), und ziehen Sie sie auf den Zeichenbereich unter die Komponente **Split Data**. Verknüpfen Sie dann die Ausgabe *Result dataset1* (links) der Komponente **Split Data** mit der Eingabe *Dataset* (rechts) der Komponente **Train Model**.
+2. Das Modell, das wir trainieren, sagt den Wert **Diabetic** vorher. Wählen Sie also die Komponente **Train Model** aus, und ändern Sie deren Einstellungen, um die Spalte **Label** auf **Diabetic** (achten Sie auf die Groß-/Kleinschreibung) festzulegen.
+3. Die Bezeichnung **Diabetic**, die das Modell vorhersagt, ist eine binäre Spalte (Wert 1 für Patienten mit Diabetes und Wert 0 für Patienten ohne Diabetes). Daher müssen Sie das Modell mithilfe eines Algorithmus zur *Klassifizierung* trainieren. Suchen Sie nach der Komponente **Two-Class Logistic Regression**, ziehen Sie sie in den Zeichenbereich, und legen Sie sie neben der Komponente **Split Data** und über der Komponente **Train Model** ab. Verbinden Sie anschließend die Ausgabe mit der (linken) Eingabe **Untrained model** (Untrainiertes Modell) der Komponente **Train Model**.
+4. Um das trainierte Modell zu testen, müssen wir es zur Bewertung des Validierungsdatasets verwenden, das wir bei der Aufteilung der Originaldaten zurückgehalten haben. Suchen Sie nach der Komponente **Score Model** (Modell bewerten), ziehen Sie sie in den Zeichenbereich, und legen Sie sie unter der Komponente **Train Model** ab. Verbinden Sie anschließend die Ausgabe der Komponente **Train Model** mit der (linken) Eingabe **Trained Model** der Komponente **Score Model**. Ziehen Sie die (rechte) Ausgabe **Results dataset2** der Komponente **Split Data** in die (rechte) Eingabe **Dataset** der Komponente **Score Model**.
+5. Um die Leistung des Modells auszuwerten, müssen wir uns einige Metriken ansehen, die durch die Bewertung des Validierungsdatasets generiert werden. Suchen Sie nach der Komponente **Evaluate Model**, und ziehen Sie sie in den Zeichenbereich unter die Komponente **Score Model**. Verbinden Sie die Ausgabe der Komponente **Score Model** mit der Eingabe **Score dataset** (links) der Komponente **Evaluate Model**.
 
 ## <a name="run-the-training-pipeline"></a>Ausführen der Trainingspipeline
 
@@ -117,10 +117,10 @@ Nachdem Sie die Schritte des Datenflusses definiert haben, können Sie nun die T
     >
     > Während der Ausführung können Sie die erstellten Pipelines und Experimente auf den Seiten **Pipelines** und **Experimente** anzeigen. Wenn sie fertig sind, wechseln Sie zurück zur Pipeline **Visuelles Diabetes-Training** auf der Seite **Designer**.
 
-3. Nachdem das Modul **Daten normalisieren** abgeschlossen wurde, wählen Sie dieses aus. Klicken Sie dann im Bereich **Einstellungen** auf die Registerkarte **Ausgaben + Protokolle**. Klicken Sie anschließend unter **Datenausgaben** im Abschnitt **Transformierter Datensatz** auf das Symbol **Datenvorschau**. Beachten Sie, dass Sie Statistiken und Verteilungsvisualisierungen für die transformierten Spalten anzeigen können.
-4. Schließen Sie die Visualisierungen **Daten normalisieren** und warten Sie, bis die restlichen Module abgeschlossen sind. Visualisieren Sie dann die Ausgabe des Moduls **Modell auswerten**, um die Leistungsmetriken für das Modell anzuzeigen.
+3. Nachdem die Komponente **Normalize Data** abgeschlossen wurde, wählen Sie diese aus. Klicken Sie dann im Bereich **Einstellungen** auf die Registerkarte **Ausgaben + Protokolle**. Klicken Sie anschließend unter **Datenausgaben** im Abschnitt **Transformierter Datensatz** auf das Symbol **Datenvorschau**. Beachten Sie, dass Sie Statistiken und Verteilungsvisualisierungen für die transformierten Spalten anzeigen können.
+4. Schließen Sie die Visualisierungen **Normalize Data**, und warten Sie, bis die restlichen Komponenten abgeschlossen sind. Visualisieren Sie dann die Ausgabe der Komponente **Evaluate Model**, um die Leistungsmetriken für das Modell anzuzeigen.
 
-    **Hinweis**: Die Leistung dieses Modells ist nicht besonders gut, was zum Teil daran liegt, dass wir nur eine minimale Featurisierung und Vorverarbeitung durchgeführt haben. Sie könnten verschiedene Klassifizierungsalgorithmen ausprobieren und die Ergebnisse vergleichen (Sie können die Ausgaben des Moduls **Daten aufteilen** mit mehreren Modulen **Modell trainieren** und **Modell bewerten** verbinden, und Sie können ein zweites bewertetes Modell mit dem Modul **Modell auswerten** verbinden, um einen direkten Vergleich zu erhalten). Der Zweck der Übung besteht lediglich darin, Sie mit der Designeroberfläche vertraut zu machen. Das Ziel ist nicht, ein perfektes Modell zu trainieren.
+    **Hinweis**: Die Leistung dieses Modells ist nicht besonders gut, was zum Teil daran liegt, dass wir nur eine minimale Featurisierung und Vorverarbeitung durchgeführt haben. Sie könnten verschiedene Klassifizierungsalgorithmen ausprobieren und die Ergebnisse vergleichen (Sie können die Ausgaben der Komponente **Split Data** mit mehreren Komponenten des Typs **Train Model** und **Score Model** verbinden, und Sie können eine zweite bewertete Komponente mit dem Modul **Evaluate Model** verbinden, um einen direkten Vergleich zu erhalten). Der Zweck der Übung besteht lediglich darin, Sie mit der Designeroberfläche vertraut zu machen. Das Ziel ist nicht, ein perfektes Modell zu trainieren.
 
 ## <a name="create-an-inference-pipeline"></a>Erstellen einer Rückschlusspipeline
 
@@ -129,7 +129,7 @@ Nachdem Sie eine *Trainingspipeline* zum Trainieren eines Modells verwendet habe
 1. Klicken Sie in der Dropdownliste **Rückschlusspipeline erstellen** auf **Echtzeit-Rückschlusspipeline**. Nach einigen Sekunden wird eine neue Version Ihrer Pipeline mit dem Namen **Visuelles Diabetes-Training – Echtzeitrückschlüsse** geöffnet.
 2. Benennen Sie die neue Pipeline in **Diabetesvorhersage** um, und überprüfen Sie dann die neue Pipeline. Hinweis: Die Normalisierungstransformation und das trainierte Modell wurden in dieser Pipeline gekapselt, sodass die Statistiken aus Ihren Trainingsdaten verwendet werden, um neue Datenwerte zu normalisieren. Außerdem wird das trainierte Modell verwendet, um die neuen Daten zu bewerten.
 3. Beachten Sie, dass die Rückschlusspipeline davon ausgeht, dass neue Daten dem Schema der ursprünglichen Trainingsdaten entsprechen, deshalb wird das **Diabetes-Dataset** aus der Trainingspipeline eingeschlossen. Diese Eingabedaten enthalten jedoch die Bezeichnung **Diabetic**, die vom Modell vorhergesagt wird. Diese Bezeichnung in neue Patientendaten einzubeziehen, ist nicht intuitiv, da noch keine Vorhersage über den Diabetes ausgeführt wurde.
-4. Löschen Sie das **Diabetes-Dataset** aus der Rückschlusspipeline, und ersetzen Sie es durch ein Modul **Daten manuell eingeben** aus dem Abschnitt **Dateneingabe und -ausgabe**. Verbinden Sie es mit derselben **Dataset** eingabe des Moduls **Transformation anwenden** wie die **Webdiensteingabe**. Ändern Sie dann die Einstellungen des Moduls **Daten manuell eingeben** so ab, dass die folgende CSV-Eingabe verwendet wird, die Featurewerte für drei neue Patientenbeobachtungen enthält:
+4. Löschen Sie das Dataset **diabetes dataset** aus der Rückschlusspipeline, und ersetzen Sie es durch eine Komponente **Enter Data Manually** (Daten manuell eingeben). Verbinden Sie es mit derselben **Dataseteingabe** der Komponente **Apply Transformation** (Transformierung anwenden) wie die **Webdiensteingabe**. Ändern Sie dann die Einstellungen der Komponente **Enter Data Manually** so ab, dass die folgende CSV-Eingabe verwendet wird, die Featurewerte für drei neue Patientenbeobachtungen enthält:
 
 ```CSV
 PatientID,Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,SerumInsulin,BMI,DiabetesPedigree,Age
@@ -138,8 +138,8 @@ PatientID,Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,Seru
 1228510,4,115,50,29,243,34.69215364,0.741159926,59
 ```
 
-5. Die Rückschlusspipeline umfasst das Modell **Modul auswerten**, das bei der Vorhersage aus neuen Daten nicht nützlich ist. Löschen Sie daher dieses Modul.
-6. Der Ausgang des Moduls **Modell bewerten** umfasst alle Eingabefeatures sowie die vorhergesagte Bezeichnung und den Wahrscheinlichkeitsscore. Um die Ausgabe auf die Vorhersage und die Wahrscheinlichkeit zu beschränken, löschen Sie die Verbindung zwischen dem Modul **Modell bewerten** und der **Webdienstausgabe**. Fügen Sie ein Modul **Python-Skript ausführen** aus dem Abschnitt **Python-Sprache** hinzu, und verbinden Sie die Ausgabe des Moduls **Modell bewerten** mit dem **Dataset1** (ganz links) des Moduls **Pythonskript ausführen**. Verbinden Sie dann die Ausgabe des Moduls **Python-Skript ausführen** mit dem Modul **Webdienstausgabe**. Ändern Sie anschließend die Einstellungen des Moduls **Python-Skript ausführen**, um den folgenden Code zu verwenden (ersetzen Sie dabei den gesamten vorhandenen Code):
+5. Die Rückschlusspipeline umfasst die Komponente **Evaluate Model**, die bei der Vorhersage aus neuen Daten nicht nützlich ist. Löschen Sie daher diese Komponente.
+6. Die Ausgang der Komponente **Score Model** umfasst alle Eingabefeatures sowie die vorhergesagte Bezeichnung und den Wahrscheinlichkeitsscore. Um die Ausgabe nur auf die Vorhersage und Wahrscheinlichkeit zu beschränken, löschen Sie die Verbindung zwischen der **Score Model**-Komponente und der **Webdienstausgabe**, fügen Sie dann eine **Execute Python Script**-Komponente (Python-Skript ausführen) hinzu. Verbinden Sie den Ausgang der Komponente **Score Model** mit dem (ganz linken) Eingang **Dataset1** von **Execute Python Script**, und verbinden Sie den Ausgang der Komponente **Execute Python Script** mit dem **Webdienstausgang**. Ändern Sie anschließend die Einstellungen der Komponente **Execute Python Script**, um den folgenden Code zu verwenden (ersetzen Sie dabei den gesamten vorhandenen Code):
 
 ```Python
 import pandas as pd
@@ -152,7 +152,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
                             inplace=True)
     return scored_results
 ```
-> **Hinweis**: Überprüfen Sie nach dem Einfügen des Codes in das Modul **Python-Skript ausführen**, ob der Code ähnlich aussieht wie der obige Code. Einzüge sind in Python wichtig, und das Modul erzeugt Fehler, wenn die Einzüge nicht ordnungsgemäß kopiert werden. 
+> **Hinweis:** Überprüfen Sie nach dem Einfügen des Codes in die Komponente **Execute Python Script**, ob der Code ähnlich aussieht wie der obige Code. Einzüge sind in Python wichtig, und die Komponente erzeugt Fehler, wenn die Einzüge nicht ordnungsgemäß kopiert werden. 
 
 7. Stellen Sie sicher, dass Ihre Pipeline der folgenden ähnelt:
 
@@ -166,7 +166,7 @@ Sie verfügen nun über eine Rückschlusspipeline für Echtzeitrückschlüsse, d
 
 > **Hinweis:** In dieser Übung stellen Sie den Webdienst in Azure Container Instances (ACI) bereit. Solche Computeressourcen werden dynamisch erstellt und sind für Entwicklungs- und Testzwecke nützlich. Für Produktionszwecke sollten Sie einen *Rückschlusscluster* erstellen, der einen AKS-Cluster (Azure Kubernetes Service) mit verbesserter Skalierbarkeit und Sicherheit bereitstellt.
 
-1. Wenn die Rückschlusspipeline **Diabetesvorhersage** noch nicht abgeschlossen ist, warten Sie auf ihren Abschluss. Visualisieren Sie dann die Ausgabe für das **Ergebnisdataset** des Moduls **Python-Skript ausführen**, um die vorhergesagten Bezeichnungen und Wahrscheinlichkeiten für die drei Patientenbeobachtungen in den Eingabedaten anzuzeigen.
+1. Wenn die Rückschlusspipeline **Diabetesvorhersage** noch nicht abgeschlossen ist, warten Sie auf ihren Abschluss. Visualisieren Sie dann die Ausgabe für das **Ergebnisdataset** der Komponente **Execute Python Script**, um die vorhergesagten Bezeichnungen und Wahrscheinlichkeiten für die drei Patientenbeobachtungen in den Eingabedaten anzuzeigen.
 2. Klicken Sie oben rechts auf **Bereitstellen**, und stellen Sie einen neuen Echtzeitendpunkt bereit. Legen Sie dabei die folgenden Einstellungen fest:
     -  **Name**: Designer-Diabetesvorhersage
     -  **Description**: Vorhersage von Diabetes.

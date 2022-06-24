@@ -1,12 +1,12 @@
 ---
 lab:
   title: Verwenden von automatisiertem maschinellen Lernen
-ms.openlocfilehash: 9836a169752705779f263e7b005baf11e2f7b616
-ms.sourcegitcommit: 8601551af6c32a4c75fd9ecffce750583c2ab4b8
+ms.openlocfilehash: 70580a25d4bcd3929697874650ea6865262871f4
+ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2022
-ms.locfileid: "141346684"
+ms.lasthandoff: 06/11/2022
+ms.locfileid: "146266838"
 ---
 # <a name="use-automated-machine-learning"></a>Verwenden von automatisiertem maschinellen Lernen
 
@@ -84,7 +84,7 @@ In Azure Machine Learning werden ausgeführte Vorgänge *Experimente* genannt. F
     - **Tasktyp- und einstellungen**:
         - **Aufgabentyp**: Klassifizierung
         - Wählen Sie **Zusätzliche Konfigurationseinstellungen anzeigen** aus, um **Zusätzliche Konfigurationen** zu öffnen:
-            - **Primäre Metrik**: Wählen Sie **AUC_Weighted** aus (*Weitere Informationen zu dieser Metrik folgen später.* )
+            - **Primary metric** (Primäre Metrik): Wählen Sie **AUC_Weighted** aus (*Weitere Informationen zu dieser Metrik folgen später.* )
             - **Explain best model** (Bestes Modell erklären): ausgewählt – *Diese Option bewirkt, dass mit dem automatisierten maschinellen Lernen die Relevanz der Merkmale für das beste Modell berechnet wird. So können Sie den Einfluss der einzelnen Merkmale auf die vorhergesagte Bezeichnung ermitteln.*
             - **Alle unterstützten Modelle verwenden**: <u>Nicht</u> ausgewählt: Sie beschränken das Experiment darauf, einige bestimmte Algorithmen auszuprobieren.
             - **Zulässige Modelle**: Wählen Sie nur **LogisticRegression** und **RandomForest** aus. Dies sind die einzigen Algorithmen, die im Experiment getestet werden.
@@ -106,7 +106,7 @@ In Azure Machine Learning werden ausgeführte Vorgänge *Experimente* genannt. F
 
 Nachdem das Experiment abgeschlossen wurde, können Sie das generierte Modell mit der besten Leistung überprüfen. (Beachten Sie, dass in diesem Fall Beendigungskriterien verwendet wurden, um das Experiment zu beenden. Daher ist das im Rahmen des Experiments ermittelte „beste“ Modell möglicherweise nicht das bestmögliche Modell, sondern nur das beste, das innerhalb der für diese Übung festgelegten Zeit- und Metrikeinschränkungen gefunden wurde.)
 
-1. Beachten Sie auf der Registerkarte **Details** der automatisierten ML-Ausführung die Zusammenfassung des besten Modells.
+1. Beachten Sie auf der Registerkarte **Übersicht** der automatisierten ML-Ausführung die Zusammenfassung des besten Modells.
 2. Wählen Sie den **Algorithmusnamen** für das beste Modell aus, um die untergeordnete Ausführung anzuzeigen, durch die es generiert wurde.
 
     Das beste Modell wird basierend auf der von Ihnen angegebenen Auswertungsmetrik identifiziert (*AUC_Weighted*). Im Rahmen des Trainingsprozesses wurden zum Berechnen dieser Metrik einige Daten für das Modelltraining verwendet. Außerdem wurde eine Technik namens *Kreuzvalidierung* angewendet, um das trainierte Modell iterativ mit Daten zu testen, mit denen es nicht trainiert wurde, und den vorhergesagten Wert mit dem tatsächlichen bekannten Wert zu vergleichen. Aus diesen Vergleichen wird eine *Konfusionsmatrix* aus „true-positives“, „false-positives“, „true-negatives“ und „false-negatives“ zusammengestellt, und es werden zusätzliche Klassifizierungsmetriken berechnet, einschließlich eines Diagramms mit einer ROC-Kurve (Receiver Operating Characteristics), in dem die True-Positive-Rate mit der False-Positive-Rate verglichen wird. Die Fläche unter der Kurve (Area Under the Curve, AUC) ist eine allgemeine Metrik, die zum Auswerten der Klassifizierungsleistung verwendet wird.
@@ -120,7 +120,7 @@ Nachdem Sie mithilfe von automatisiertem maschinellem Lernen einige Modelle trai
 
 > **Hinweis**: In Azure Machine Learning können Sie einen Dienst als ACI-Instanz (Azure Container Instances) oder in einem AKS-Cluster (Azure Kubernetes Service) bereitstellen. In Produktionsszenarios wird eine AKS-Bereitstellung empfohlen, für die Sie einen *Rückschlusscluster* als Computeziel erstellen müssen. In dieser Übung verwenden Sie einen ACI-Dienst, der ein geeignetes Bereitstellungsziel für Tests darstellt. Es ist nicht erforderlich, einen Rückschlusscluster zu erstellen.
 
-1. Wählen Sie die Registerkarte **Details** für die Ausführung aus, die das beste Modell erzeugt hat.
+1. Wählen Sie die Registerkarte **Übersicht** für die Ausführung aus, die das beste Modell erzeugt hat.
 2. Verwenden Sie in der Option **Bereitstellen** die Schaltfläche **Für Webdienst bereitstellen**, um das Modell mit den folgenden Einstellungen bereitzustellen:
     - **Name**: auto-predict-diabetes
     - **Beschreibung**: Vorhersage von Diabetes
