@@ -1,12 +1,12 @@
 ---
 lab:
   title: Verwenden von automatisiertem maschinellen Lernen
-ms.openlocfilehash: 70580a25d4bcd3929697874650ea6865262871f4
-ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
+ms.openlocfilehash: a4908c0de74edb6c2fdf7b1a7288014d1ab86b94
+ms.sourcegitcommit: 48bc4227570b0817702d195aa06fa4dabe1bbdd7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2022
-ms.locfileid: "146266838"
+ms.lasthandoff: 06/29/2022
+ms.locfileid: "146733066"
 ---
 # <a name="use-automated-machine-learning"></a>Verwenden von automatisiertem maschinellen Lernen
 
@@ -42,7 +42,7 @@ Um automatisiertes maschinelles Lernen verwenden zu können, benötigen Sie eine
 Da Sie nun über einige Computeressourcen verfügen, die Sie zum Verarbeiten von Daten verwenden können, benötigen Sie eine Möglichkeit, die zu verarbeitenden Daten zu speichern und zu erfassen.
 
 1. Zeigen Sie die durch Trennzeichen getrennten Daten unter https://aka.ms/diabetes-data in Ihrem Webbrowser an. Speichern Sie diese dann als lokale Datei namens **diabetes.csv** (der Speicherort spielt keine Rolle).
-2. Zeigen Sie in Azure Machine Learning Studio die Seite **Datasets** an. Datasets stellen bestimmte Datendateien oder Tabellen dar, mit denen Sie in Azure Machine Learning arbeiten möchten.
+2. Zeigen Sie in Azure Machine Learning Studio die Seite **Daten** an. Datasets stellen bestimmte Datendateien oder Tabellen dar, mit denen Sie in Azure Machine Learning arbeiten möchten.
 3. Erstellen Sie mithilfe der folgenden Einstellungen ein neues Dataset aus lokalen Dateien:
     * **Basisinformationen:**
         * **Name**: Diabetes-Dataset

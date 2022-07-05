@@ -1,12 +1,12 @@
 ---
 lab:
   title: Verwenden des Azure Machine Learning-Designers
-ms.openlocfilehash: 55911fdc4ea7e3a2b48ab0d0a583a0a24121ffca
-ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
+ms.openlocfilehash: ce03f54e5762e66363608b88fd86ec1de5795a33
+ms.sourcegitcommit: 48bc4227570b0817702d195aa06fa4dabe1bbdd7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2022
-ms.locfileid: "146266847"
+ms.lasthandoff: 06/29/2022
+ms.locfileid: "146733075"
 ---
 # <a name="use-azure-machine-learning-designer"></a>Verwenden des Azure Machine Learning-Designers
 
@@ -37,7 +37,7 @@ Um den Azure Machine Learning-Designer verwenden zu können, benötigen Sie eine
 
 Nachdem Sie nun über einige Computerressourcen verfügen, die Sie zum Ausführen einer Trainingspipeline verwenden können, benötigen Sie einige Daten zum Trainieren des Modells.
 
-1. Zeigen Sie in Azure Machine Learning Studio die Seite **Datasets** an. Datasets stellen bestimmte Datendateien oder Tabellen dar, mit denen Sie in Azure Machine Learning arbeiten möchten.
+1. Zeigen Sie in Azure Machine Learning Studio die Seite **Daten** an. Datasets stellen bestimmte Datendateien oder Tabellen dar, mit denen Sie in Azure Machine Learning arbeiten möchten.
 2. Wenn Sie das **Diabetes-Dataset** zuvor bereits erstellt haben, öffnen Sie es. Erstellen Sie andernfalls mithilfe der folgenden Einstellungen ein neues Dataset aus den Webdateien:
     * **Basisinformationen:**
         * **Web-URL:** https://aka.ms/diabetes-data
@@ -64,10 +64,10 @@ Zum Einstieg in den Designer müssen Sie zunächst eine Pipeline erstellen und d
 
 1. Zeigen Sie in Azure Machine Learning Studio die Seite **Designer** für Ihren Arbeitsbereich an, und erstellen Sie eine neue Pipeline.
 2. Ändern Sie den Standardpipelinenamen (**Pipeline-Created-on-* date***) in **Visual Diabetes Training**, indem Sie rechts auf das Symbol **&#9881;** klicken, um den Bereich **Einstellungen** zu öffnen.
-3. Beachten Sie, dass Sie ein Computeziel angeben müssen, auf dem die Pipeline ausgeführt werden soll. Klicken Sie im Bereich **Einstellungen** auf **Computeziel auswählen**, und wählen Sie Ihren Computecluster aus.
+3. Beachten Sie, dass Sie ein Computeziel angeben müssen, auf dem die Pipeline ausgeführt werden soll. Klicken Sie im Bereich **Einstellungen** auf **Computetyp auswählen**, wählen Sie den Computecluster aus, klicken Sie auf „Azure ML-Computecluster auswählen“, wählen Sie Ihren Computercluster aus, und schließen Sie „Einstellungen“.
 4. Wählen Sie auf der linken Seite des Designers die Registerkarte **Data** (Daten) aus, und ziehen Sie das **diabetes dataset** in den Zeichenbereich.
 5. Wählen Sie die Komponente **diabetes datasett** im Zeichenbereich aus. Klicken Sie dann mit der rechten Maustaste darauf, und wählen Sie **Datenvorschau** aus.
-6. Wählen Sie im Bereich DatasetOutput die Registerkarte **Profil** aus.
+6. Wählen Sie im Bereich DataOutput die Registerkarte **Profil** aus.
 7. Überprüfen Sie das Schema der Daten. Beachten Sie, dass die Verteilungen der verschiedenen Spalten als Histogramme angezeigt werden. Schließen Sie dann das Visualisierungsfenster.
 
 ## <a name="add-transformations"></a>Transformationen hinzufügen
@@ -126,10 +126,11 @@ Nachdem Sie die Schritte des Datenflusses definiert haben, können Sie nun die T
 
 Nachdem Sie eine *Trainingspipeline* zum Trainieren eines Modells verwendet haben, können Sie eine *Rückschlusspipeline* erstellen, die das trainierte Modell zur Vorhersage von Bezeichnungen für neue Daten verwendet.
 
-1. Klicken Sie in der Dropdownliste **Rückschlusspipeline erstellen** auf **Echtzeit-Rückschlusspipeline**. Nach einigen Sekunden wird eine neue Version Ihrer Pipeline mit dem Namen **Visuelles Diabetes-Training – Echtzeitrückschlüsse** geöffnet.
-2. Benennen Sie die neue Pipeline in **Diabetesvorhersage** um, und überprüfen Sie dann die neue Pipeline. Hinweis: Die Normalisierungstransformation und das trainierte Modell wurden in dieser Pipeline gekapselt, sodass die Statistiken aus Ihren Trainingsdaten verwendet werden, um neue Datenwerte zu normalisieren. Außerdem wird das trainierte Modell verwendet, um die neuen Daten zu bewerten.
-3. Beachten Sie, dass die Rückschlusspipeline davon ausgeht, dass neue Daten dem Schema der ursprünglichen Trainingsdaten entsprechen, deshalb wird das **Diabetes-Dataset** aus der Trainingspipeline eingeschlossen. Diese Eingabedaten enthalten jedoch die Bezeichnung **Diabetic**, die vom Modell vorhergesagt wird. Diese Bezeichnung in neue Patientendaten einzubeziehen, ist nicht intuitiv, da noch keine Vorhersage über den Diabetes ausgeführt wurde.
-4. Löschen Sie das Dataset **diabetes dataset** aus der Rückschlusspipeline, und ersetzen Sie es durch eine Komponente **Enter Data Manually** (Daten manuell eingeben). Verbinden Sie es mit derselben **Dataseteingabe** der Komponente **Apply Transformation** (Transformierung anwenden) wie die **Webdiensteingabe**. Ändern Sie dann die Einstellungen der Komponente **Enter Data Manually** so ab, dass die folgende CSV-Eingabe verwendet wird, die Featurewerte für drei neue Patientenbeobachtungen enthält:
+1. Navigieren Sie auf der Registerkarte **Aufträge** zur abgeschlossenen Pipeline. 
+2. Wählen Sie **Rückschlusspipeline erstellen** aus, und klicken Sie auf die **Echtzeit-Rückschlusspipeline**. Nach einigen Sekunden wird eine neue Version Ihrer Pipeline mit dem Namen **Visuelles Diabetes-Training – Echtzeitrückschlüsse** geöffnet.
+3. Benennen Sie die neue Pipeline in **Diabetesvorhersage** um, und überprüfen Sie dann die neue Pipeline. Hinweis: Die Normalisierungstransformation und das trainierte Modell wurden in dieser Pipeline gekapselt, sodass die Statistiken aus Ihren Trainingsdaten verwendet werden, um neue Datenwerte zu normalisieren. Außerdem wird das trainierte Modell verwendet, um die neuen Daten zu bewerten.
+4. Beachten Sie, dass die Rückschlusspipeline davon ausgeht, dass neue Daten dem Schema der ursprünglichen Trainingsdaten entsprechen, deshalb wird das **Diabetes-Dataset** aus der Trainingspipeline eingeschlossen. Diese Eingabedaten enthalten jedoch die Bezeichnung **Diabetic**, die vom Modell vorhergesagt wird. Diese Bezeichnung in neue Patientendaten einzubeziehen, ist nicht intuitiv, da noch keine Vorhersage über den Diabetes ausgeführt wurde.
+5. Löschen Sie das Dataset **diabetes dataset** aus der Rückschlusspipeline, und ersetzen Sie es durch eine Komponente **Enter Data Manually** (Daten manuell eingeben). Verbinden Sie es mit derselben **Dataseteingabe** der Komponente **Apply Transformation** (Transformierung anwenden) wie die **Webdiensteingabe**. Ändern Sie dann die Einstellungen der Komponente **Enter Data Manually** so ab, dass die folgende CSV-Eingabe verwendet wird, die Featurewerte für drei neue Patientenbeobachtungen enthält:
 
 ```CSV
 PatientID,Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,SerumInsulin,BMI,DiabetesPedigree,Age
